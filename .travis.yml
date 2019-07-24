@@ -1,0 +1,16 @@
+language: minimal
+
+services:
+  - docker
+
+script:
+  - docker build -t plus64nz/call-handler-basic-asterisk asterisk
+
+before_deploy:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+
+deploy:
+  provider: script
+  script: plus64nz/call-handler-basic-asterisk
+  on:
+    branch: master

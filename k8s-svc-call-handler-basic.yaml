@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: call-handler-basic
+  labels:
+    app: call-handler-basic
+    tier: middle
+spec:
+  ports:
+  - name: sip
+    port: 5060
+    targetPort: 5060
+  - name: sip-tls
+    port: 5061
+    targetPort: 5061
+  selector:
+    app: call-handler-basic
+    tier: middle
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: call-handler-basic
+spec:
+  selector:
+    matchLabels:
+      app: call-handler-basic
+      tier: middle
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: call-handler-basic
+        tier: middle
+    spec:
+      containers:
+      - name: call-handler-basic-asterisk
+        image: plus64nz/call-handler-basic-asterisk:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+        ports:
+        - containerPort: 5061
