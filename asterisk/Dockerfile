@@ -3,7 +3,7 @@ LABEL maintainer="Michael Walton"
 WORKDIR /root/
 
 RUN apk update \
-  && apk add asterisk asterisk-sample-config
+  && apk add asterisk asterisk-sample-config asterisk-sounds-en
 
 COPY etc /etc/
 
