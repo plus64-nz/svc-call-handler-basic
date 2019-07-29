@@ -17,10 +17,12 @@ spec:
   - name: rtp1
     port: 30900
     targetPort: 30900
+    nodePort: 30900
     protocol: UDP
   - name: rtcp1
     port: 30901
     targetPort: 30901
+    nodePort: 30901
     protocol: UDP
   selector:
     app: call-handler-basic

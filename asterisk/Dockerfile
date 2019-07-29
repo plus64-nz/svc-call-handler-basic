@@ -8,4 +8,4 @@ RUN apk update \
 COPY etc /etc/
 
 EXPOSE 5060 5061
-CMD ["asterisk","-vvv","-c"]
+CMD ["asterisk","-vvv","-f"]
