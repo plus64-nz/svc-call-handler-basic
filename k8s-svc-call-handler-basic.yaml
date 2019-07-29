@@ -6,6 +6,7 @@ metadata:
     app: call-handler-basic
     tier: middle
 spec:
+  type: NodePort
   ports:
   - name: sip
     port: 5060
@@ -46,7 +47,7 @@ spec:
         image: plus64nz/call-handler-basic-asterisk:latest
         resources:
           requests:
-            cpu: 100m
+            cpu: 800m
             memory: 512Mi
         ports:
         - containerPort: 5061
